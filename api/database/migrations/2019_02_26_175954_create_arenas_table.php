@@ -15,16 +15,15 @@ class CreateArenasTable extends Migration
     {
         Schema::create('arenas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('tag_line')->nullable(true);
-            $table->text('address');
-            $table->float('lat');
-            $table->float('lon');
-            $table->string('phone');
-            $table->text('email');
+            $table->unsignedInteger('franchise_id');
+            $table->string('arena_type_id');
+            $table->text('description')->nullable(true);
             $table->boolean('status')->default(1);
-            $table->boolean('allow_on_site')->default(1);
+            $table->text('inactive_reason')->nullable(true);
             $table->timestamps();
+            $table->foreign('franchise_id')
+                  ->references('id')->on('franchises')
+                  ->onDelete('cascade');
         });
     }
 
