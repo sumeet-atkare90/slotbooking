@@ -2,9 +2,13 @@
 
 namespace App;
 
+use App\User;
+use App\Arena;
+use App\FranchiseWorkingDay;
 use Illuminate\Database\Eloquent\Model;
 
 // class User extends Model implements AuthenticatableContract, AuthorizableContract
+
 class Franchise extends Model
 {
     //use Authenticatable, Authorizable;
@@ -24,4 +28,19 @@ class Franchise extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function arenas()
+    {
+        return $this->hasMany('App\Arena');
+    }
+
+    public function franchiseWorkingDays()
+    {
+        return $this->hasOne('App\FranchiseWorkingDay');
+    }
 }

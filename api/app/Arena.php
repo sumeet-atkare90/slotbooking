@@ -2,9 +2,11 @@
 
 namespace App;
 
+use App\Franchise;
 use Illuminate\Database\Eloquent\Model;
 
 // class User extends Model implements AuthenticatableContract, AuthorizableContract
+
 class Arena extends Model
 {
     //use Authenticatable, Authorizable;
@@ -24,4 +26,9 @@ class Arena extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function franchise()
+    {
+        return $this->belongsTo('App\Franchise');
+    }
 }
