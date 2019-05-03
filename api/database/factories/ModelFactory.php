@@ -12,35 +12,28 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'lastname' => $faker->name,
         'email' => $faker->safeEmail,
         'password' => Hash::make('password'),
+        'api_token' => Hash::make('api_token'),
         'status' => 1
     ];
 });
 
 $factory->define(App\Franchise::class, function (Faker\Generator $faker) {
     return [
-        'user_id' => function() {
-        	return User::all()->random();
+        'user_id' => function () {
+            return User::all()->random();
         },
         'name' => $faker->name,
-		'tag_line' => $faker->sentence(6,2),
-		'address' => $faker->address,
-		'lat' => $faker->latitude(90,-90),
-		'lon' => $faker->longitude(-180,180),
-		'phone' => $faker->phoneNumber,
-		'additional_phone' => $faker->phoneNumber,
-		'email' => $faker->safeEmail,
-		'logo' => $faker->imageUrl(640, 480, 'cats'),
-		'status' => $faker->boolean(100),
-		'inactive_reason' => "",
-		'allow_on_site' => $faker->boolean(100),
-    ];
-});
-
-$factory->define(App\FranchiseWorkingDay::class, function (Faker\Generator $faker) {
-    return [
-        'franchise_id' => function() {
-        	return Franchise::all()->random();
-        },
+        'tag_line' => $faker->sentence(6, 2),
+        'address' => $faker->address,
+        'lat' => $faker->latitude(90, -90),
+        'lon' => $faker->longitude(-180, 180),
+        'phone' => $faker->phoneNumber,
+        'additional_phone' => $faker->phoneNumber,
+        'email' => $faker->safeEmail,
+        'logo' => $faker->imageUrl(640, 480, 'cats'),
+        'status' => $faker->boolean(100),
+        'inactive_reason' => "",
+        'allow_on_site' => $faker->boolean(100),
         'monday' => $faker->boolean(100),
         'tuesday' => $faker->boolean(100),
         'wednesday' => $faker->boolean(100),
@@ -59,11 +52,11 @@ $factory->define(App\ArenaType::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Arena::class, function (Faker\Generator $faker) {
     return [
-        'franchise_id' => function() {
-        	return Franchise::all()->random();
+        'franchise_id' => function () {
+            return Franchise::all()->random();
         },
-        'arena_type_id' => function() {
-        	return ArenaType::all()->random();
+        'arena_type_id' => function () {
+            return ArenaType::all()->random();
         },
         'description' => $faker->text,
         'status' => $faker->boolean(100),

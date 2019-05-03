@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 // class User extends Model implements AuthenticatableContract, AuthorizableContract
+
 class User extends Model
 {
     //use Authenticatable, Authorizable;
@@ -20,7 +21,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'email', 'password', 'status'
+        'firstname', 'lastname', 'email', 'password', 'status', 'api_token'
     ];
 
     /**
@@ -29,7 +30,7 @@ class User extends Model
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password', 'api_token'
     ];
 
     public function franchises()

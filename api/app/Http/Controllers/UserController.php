@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['showAllUsers']]);
+    }
+
     public function showAllUsers()
     {
         return response()->json(User::all());

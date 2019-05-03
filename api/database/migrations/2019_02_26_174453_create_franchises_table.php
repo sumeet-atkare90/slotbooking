@@ -28,10 +28,17 @@ class CreateFranchisesTable extends Migration
             $table->boolean('status')->default(1);
             $table->text('inactive_reason')->nullable(true);
             $table->boolean('allow_on_site')->default(1);
+            $table->boolean('monday');
+            $table->boolean('tuesday');
+            $table->boolean('wednesday');
+            $table->boolean('thursday');
+            $table->boolean('friday');
+            $table->boolean('saturday');
+            $table->boolean('sunday');
             $table->timestamps();
             $table->foreign('user_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 
